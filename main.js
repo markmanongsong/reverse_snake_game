@@ -525,8 +525,8 @@ const checkCollisionOfSnake = (snake) => {
   });
 
   if (indexPosition !== -1) {
-    console.log('game-over'); 
-    gameOver(); 
+    console.log('game-over');
+    gameOver();
     throw new CollisionException(snake, player);
   }
 };
@@ -651,13 +651,13 @@ const gamePauseResume = () => {
 ////////////////////
 
 // import background music
-const BGM = new Audio('../assets/music/background.mp3');
+const BGM = new Audio('/reverse_snake_game/assets/music/background.mp3');
 
 // import background music
-const GG = new Audio('../assets/music/game-over.mp3');
+const GG = new Audio('/reverse_snake_game/assets/music/game-over.mp3');
 
 // import background music
-const beep = new Audio('../assets/music/beep.mp3');
+const beep = new Audio('/reverse_snake_game/assets/music/beep.mp3');
 
 /**
  * play music
