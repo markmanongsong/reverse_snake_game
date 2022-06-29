@@ -1,0 +1,112 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* langding page css */
+.game-title {
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  -webkit-text-stroke: 2px #48bf91;
+}
+
+/* css for buttons */
+.button-landing-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  margin: auto;
+  min-width: 50px;
+  padding: 50px;
+}
+
+button {
+  border-radius: 5px;
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid black;
+  margin: 0 0.3em 0.3em 0;
+  font-weight: 300;
+  text-align: center;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+button:hover {
+  border: none;
+}
+
+.play,
+.how,
+.about,
+.score {
+  width: 325px;
+  height: 50px;
+  background: transparent;
+}
+
+/* End for buttons css */
+
+/* logo css */
+.logo {
+  /* margin-top: 30px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.google-play {
+  width: 170px;
+}
+.app-store {
+  width: 135px;
+}
+
+/* End of logo css */
+
+/* Pixy css */
+.pixyLandingPage {
+  position: absolute;
+  width: 100px;
+  animation: pixilated 10s linear infinite;
+  z-index: -3;
+}
+
+@keyframes pixilated {
+  0%,
+  100% {
+    top: 1vh;
+    left: 25vw;
+    transform: rotate(-20deg);
+  }
+  90%,
+  10% {
+    transform: rotate(20deg);
+  }
+  75%,
+  25% {
+    top: 0.5vh;
+    transform: rotate(-20deg);
+  }
+  65%,
+  37% {
+    top: 0.5vh;
+    transform: rotate(20deg);
+  }
+  50% {
+    top: 10px;
+    left: 67vw;
+    transform: rotate(360deg);
+  }
+}
+/* End of Pixy css */

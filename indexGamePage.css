@@ -1,0 +1,227 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  /* border: 1px solid red; */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  font-family: 'Times New Roman', Times, serif;
+}
+/******************
+  button css
+  ******************/
+.button {
+  display: flex;
+  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
+}
+
+button,
+.score,
+.movement-counter,
+.snake-counter {
+  text-align: center;
+  margin: 10px;
+  min-width: 100px;
+  padding: 10px 20px;
+  background-color: antiquewhite;
+  color: black;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 4px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+/******************
+    modal css
+    ******************/
+#pause,
+#controls,
+#instruction,
+#game-over {
+  position: fixed;
+  top: 0;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background: hsla(0, 0%, 100%, 0.1);
+}
+
+#game-over h1 {
+  display: flex;
+  justify-content: center;
+}
+
+.game-over-button {
+  display: flex;
+  justify-content: center;
+}
+
+#pause,
+#controls,
+#game-over,
+#about {
+  display: none;
+}
+#instruction {
+  display: flex;
+}
+
+/* centering h1 */
+#instruction h1 {
+  display: flex;
+  justify-content: center;
+}
+
+.popup-content {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  padding: 30px;
+  background: rgba(149, 216, 235, 0.4);
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+/* instruction button */
+#instruction .popup-content {
+  width: 380px;
+  background: radial-gradient(#44646de6, rgb(149, 216, 235));
+}
+
+#instruction .popup-content img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 250px;
+  animation: pixy 5s linear infinite;
+}
+
+/* css for pixy */
+@keyframes pixy {
+  0% {
+    transform: rotate(-20deg);
+  }
+  25% {
+    transform: rotate(20deg);
+  }
+  50% {
+    transform: rotate(-20deg);
+  }
+  75% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(-20deg);
+  }
+}
+/* end for pixy css */
+
+#instruction .popup-content p {
+  margin: 5px;
+  font-size: 17px;
+  text-align: center;
+}
+
+#instruction .popup-content .modal-button {
+  text-align: center;
+}
+/* pause button */
+#pause .popup-content {
+  width: 550px;
+  background: rgba(149, 216, 235, 0.75);
+}
+
+#pause .popup-content p {
+  margin: 5px;
+  margin-top: 20px;
+  font-size: 18px;
+  text-align: center;
+}
+
+#pause .popup-content .modal-button {
+  text-align: center;
+}
+
+/* controls button */
+#controls .popup-content {
+  width: 550px;
+  background: rgba(149, 216, 235, 0.75);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#controls .popup-content img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  border: 2px solid #666363;
+  border-radius: 5px;
+}
+
+#controls .popup-content p {
+  margin: 5px;
+  margin-top: 20px;
+  font-size: 19px;
+  text-align: center;
+}
+
+#about .popup-content {
+  width: 700px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#controls .popup-content,
+#about .popup-content {
+  background: rgb(149, 216, 235);
+}
+
+/******************
+    counters 
+******************/
+.score,
+.movement-counter,
+.snake-counter {
+  cursor: auto;
+  font-size: 20px;
+}
+
+.score {
+  min-width: 150px;
+}
+
+.movement-counter {
+  min-width: 250px;
+}
+
+.snake-counter {
+  min-width: 200px;
+}
+
+/******************
+    canvas 
+******************/
+.game-canvas {
+  text-align: center;
+}
+
+#game-canvas {
+  box-shadow: black 20px 10px 50px;
+  border: 2px solid #8bd9c7;
+}

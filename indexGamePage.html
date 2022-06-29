@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reverse Snake</title>
+    <link rel="icon" type="image/x-icon" href="/assets/image/blocky.gif" />
+
+    <link rel="stylesheet" href="/indexGamePage.css" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- buttons -->
+      <div class="button">
+        <!-- score -->
+        <p class="score" id="timer">Score: <span>0</span></p>
+        <p class="movement-counter">Movement counter: <span>0</span></p>
+        <p class="snake-counter">Snake counter: <span>1</span></p>
+
+        <button type="button" onclick="clickPause()">Exit </button>
+      </div>
+      <!-- end of buttons -->
+
+      <!-- modal -->
+      <div id="instruction">
+        <div class="popup-content">
+          <b>
+            <img src="/assets/image/blocky.gif" alt="cube logo" />
+            <h1>Hello! I&apos;m Pixy. </h1>
+            <p
+              >Welcome to Snakes Reverse! We&apos;ve flipped the original game
+              and this time, you&apos;re the prey! Can you run from the snakes
+              long enough to win the game?
+            </p>
+          </b>
+          <div class="modal-button">
+            <button type="button" onclick="clickStart()">Start</button>
+            <button
+              type="button"
+              onclick="window.location.href='/landingPage.html'"
+              >Exit</button
+            >
+          </div>
+        </div>
+      </div>
+
+      <div id="pause">
+        <div class="popup-content">
+          <h1>Are you sure you'd like to leave the game?</h1>
+          <p>
+            If you want to cancel, click cancel, and if you want to exit the
+            game, click Exit.</p
+          >
+          <div class="modal-button">
+            <button type="button" onclick="clickResume()">Cancel</button>
+            <button
+              type="button"
+              onclick="window.location.href='/landingPage.html'"
+              >Exit</button
+            >
+          </div>
+        </div>
+      </div>
+
+      <div id="game-over">
+        <div class="popup-content">
+          <h1>Game Over</h1>
+          <div class="game-over-button">
+            <button type="button" onclick="tryAgain()">Try Again</button>
+            <button
+              type="button"
+              onclick="window.location.href='/landingPage.html'"
+              >Exit</button
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- end of modal -->
+      <!-- start canvas -->
+      <div class="game-canvas">
+        <canvas id="game-canvas"></canvas>
+      </div>
+      <!-- end canvas -->
+
+      <!-- for GAME code -->
+      <div class="canvas-wrapper">
+        <div class="buttons">
+          <button type="button" id="pause-or-play">Play/Pause</button>
+          <button type="button" id="reset">Reset</button>
+          <button type="button" id="add-snake">Add Snake</button>
+        </div>
+        <div class="controller">
+          <button type="button" id="up-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+              <!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+              <path
+                d="M374.6 246.6C368.4 252.9 360.2 256 352 256s-16.38-3.125-22.62-9.375L224 141.3V448c0 17.69-14.33 31.1-31.1 31.1S160 465.7 160 448V141.3L54.63 246.6c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0l160 160C387.1 213.9 387.1 234.1 374.6 246.6z"
+              />
+            </svg>
+          </button>
+          <button type="button" id="left-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+              <path
+                d="M447.1 256C447.1 273.7 433.7 288 416 288H109.3l105.4 105.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448s-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L109.3 224H416C433.7 224 447.1 238.3 447.1 256z"
+              />
+            </svg>
+          </button>
+          <button type="button" id="down-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+              <!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+              <path
+                d="M374.6 310.6l-160 160C208.4 476.9 200.2 480 192 480s-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 370.8V64c0-17.69 14.33-31.1 31.1-31.1S224 46.31 224 64v306.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0S387.1 298.1 374.6 310.6z"
+              />
+            </svg>
+          </button>
+          <button type="button" id="right-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+              <path
+                d="M438.6 278.6l-160 160C272.4 444.9 264.2 448 256 448s-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L338.8 288H32C14.33 288 .0016 273.7 .0016 256S14.33 224 32 224h306.8l-105.4-105.4c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160C451.1 245.9 451.1 266.1 438.6 278.6z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <!-- GAME code End -->
+
+      <!-- background -->
+      <div class="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <!-- background end -->
+    </div>
+
+    <!-- for minimum screen size restriction for better user experience-->
+    <div id="error-page">
+      <div id="inner-error-page">
+        <h1 class="header"> 404 </h1>
+        <h4 data-text="Opps! Page not found"> Opps! Page not found </h4>
+        <p>
+          Sorry, the game will not work on your device's screen. To provide the
+          best user experience possible, you must meet the minimum width
+          requirement.
+        </p>
+      </div>
+    </div>
+    <!-- for minimum screen size restriction for better user experience-->
+
+    <script src="/main.js"></script>
+  </body>
+</html>
